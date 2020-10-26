@@ -78,20 +78,20 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
   }
 
   _expandAll(Map<String, dynamic> map) {
-    Logger.d(this, "expanding");
+    //Logger.d(this, "expanding");
     map.keys.forEach((key) {
-      Logger.d(this, "expanding $key");
+      //Logger.d(this, "expanding $key");
       openFlag[key] = map[key] is Map || map[key] is List;
       try {
         var value = map[key];
-        Logger.d(this, "$key -> $value is ${value.runtimeType}");
+        //Logger.d(this, "$key -> $value is ${value.runtimeType}");
 
         if (!(value is String) && !(value is int) && !value is double)
           _expandAll(map[key]);
         else if (value is List) {
           
           for (var item in value) {
-            Logger.d(this, "expanding array $key  item $item");
+            //Logger.d(this, "expanding array $key  item $item");
             _expandAll(item);
           }
         }
@@ -317,7 +317,7 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
     super.initState();
     openFlag = List();
     for (int i =0;i<widget.jsonArray.length;i++) {
-      Logger.d(this, ">>> expaidning array item $i ${widget.jsonArray[i]}");
+      //Logger.d(this, ">>> expaidning array item $i ${widget.jsonArray[i]}");
       openFlag.add(true);
     }
   }
